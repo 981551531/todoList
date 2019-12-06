@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import 'antd/dist/antd.css';
-import { Input, Button, List } from 'antd';
+
 import store from './store/index';
-import * as actionCreate from './store/actionCreators'
+import * as actionCreate from './store/actionCreators';
+import TodoListUI from './todoListUi'
 class TodoList extends Component {
 
     constructor(props) {
@@ -12,35 +12,21 @@ class TodoList extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleStoreChange = this.handleStoreChange.bind(this);
         this.handleBtnClick = this.handleBtnClick.bind(this);
+        this.handleDelete=this.handleDelete.bind(this)
         store.subscribe(this.handleStoreChange);
     }
 
     render() {
         return (
             <Fragment>
-                <div style={{ margin: "8px" }}>
-                    <Input
-                        placeholder="todoinfo"
-                        value={this.state.inputValue}
-                        style={{ width: "300px", marginRight: "8px" }}
-                        onChange={this.handleInputChange}
-                    />
-                    <Button
-                        type="primary"
-                        onClick={this.handleBtnClick}
-                    >提交</Button>
-
-                    <List
-                        style={{ width: "300px", marginTop: "10px" }}
-                        bordered
-                        dataSource={this.state.list}
-                        renderItem={(item, index) => (
-                            <List.Item onClick={this.handleDelete.bind(this, index)}>
-                                {item}
-                            </List.Item>
-                        )}
-                    />
-                </div>
+                <TodoListUI
+                    inputValue={this.state.inputValue}
+                    handleInputChange={this.handleInputChange}
+                    handleBtnClick={this.handleBtnClick}
+                    list={this.state.list}
+                    handleDelete={this.handleDelete}
+                    
+                />
             </Fragment>
         );
     }

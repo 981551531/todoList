@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import * as actionType from './actionType';
- 
+
 
 export const getInputChange = (input) => ({
     type: actionType.CHANGE_INPUT_VALUE,
@@ -41,6 +41,11 @@ export const getInitListsAction = (data) => {
     }
 } */
 
+
+//使用saga方式
+export const getInitLists = () => ({
+    type:actionType.GET_INIT_LIST
+})
 
 
 

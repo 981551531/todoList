@@ -33,13 +33,16 @@ class TodoList extends Component {
     }
 
     componentDidMount() {
-        axios.get('/list.json').then(redate => {
+       /*  axios.get('/list.json').then(redate => {
             let data = redate.data;
             //const action = getInitListsAction(data)
             const action = actionCreate.getInitListsAction(data);
 
             store.dispatch(action);
-        })
+        }) */
+
+        const action=actionCreate.getInitLists()
+        store.dispatch(action);
 
         //使用redux-thunk的方式
         /*  const action = actionCreate.getInitLists();

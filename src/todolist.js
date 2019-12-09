@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
-
+import axios from 'axios'
 import store from './store/index';
 import * as actionCreate from './store/actionCreators';
-import TodoListUI from './todoListUi'
+import TodoListUI from './todoListUi';
+
 class TodoList extends Component {
 
     constructor(props) {
@@ -12,7 +13,7 @@ class TodoList extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleStoreChange = this.handleStoreChange.bind(this);
         this.handleBtnClick = this.handleBtnClick.bind(this);
-        this.handleDelete=this.handleDelete.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
         store.subscribe(this.handleStoreChange);
     }
 
@@ -25,10 +26,25 @@ class TodoList extends Component {
                     handleBtnClick={this.handleBtnClick}
                     list={this.state.list}
                     handleDelete={this.handleDelete}
-                    
+
                 />
             </Fragment>
         );
+    }
+
+    componentDidMount() {
+        axios.get('/list.json').then(redate => {
+            let data = redate.data;
+            //const action = getInitListsAction(data)
+            const action = actionCreate.getInitListsAction(data);
+
+            store.dispatch(action);
+        })
+
+        //使用redux-thunk的方式
+        /*  const action = actionCreate.getInitLists();
+         store.dispatch(action); */
+
     }
 
     handleInputChange(e) {

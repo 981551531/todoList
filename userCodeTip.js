@@ -130,5 +130,38 @@
 			"}"
 		],
 		"description": "if comonents"
+	},
+	"react-redux": {
+		"prefix": "reactredux",
+		"body": [
+			"import React, { Component, Fragment } from 'react';",
+			"import { connect } from 'react-redux'",
+			"",
+			"class ${1:APP} extends Component {",
+			"    render() {",
+			"      return (",
+			"        <Fragment>",
+			"           coding",
+			"        </Fragment>",
+			"    );",
+			"  }",
+			"}",
+			"",
+			"//state指store中的数据",
+			"const mapStateToProps = (state) => {",
+			"  return {",
+			"  }",
+			"}",
+			"",
+			"//store.dispatch; props",
+			"const mapDispatchToProps = (dispatch) => {",
+			"  return {",
+			"    //方法",
+			"  }",
+			"}",
+			"",
+			"export default connect(mapStateToProps, mapDispatchToProps)(${1:APP});"
+		],
+		"description": "if comonents"
 	}
 }

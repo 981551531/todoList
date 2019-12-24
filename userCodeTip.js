@@ -28,19 +28,19 @@
 	"react": {
 		"prefix": "react",
 		"body": [
-			"import React, { Component, Fragment } from 'react';",
+			"import React, { ${1:Component}, Fragment } from 'react';",
 			"",
-			"class ${1:App} extends Component {",
+			"class ${2:App} extends  ${1:Component} {",
 			"  render() {",
 			"    return (",
 			"      <Fragment>",
-			"        ${2:coding}",
+			"        ${3:coding}",
 			"      </Fragment>",
 			"     );",
 			"  }",
 			"}",
 			"",
-			"export default ${1:App};"
+			"export default ${2:App};"
 		],
 		"description": "if comonents"
 	},
@@ -80,10 +80,10 @@
 	"reactStoreChange": {
 		"prefix": "reactStoreChange",
 		"body": [
-			"import React, { Component, Fragment } from 'react';",
-			"import ${1:store} from './${2}';",
+			"import React, {${1:Component} , Fragment } from 'react';",
+			"import ${2:store} from './${2}';",
 			"",
-			"class ${3:App} extends Component {",
+			"class ${4:App} extends ${1:Component} {",
 			"constructor(props){",
 			"    super(props);",
 			"    this.handleStoreChange = this.handleStoreChange.bind(this);",
@@ -93,7 +93,7 @@
 			"  render() {",
 			"    return (",
 			"      <Fragment>",
-			"        ${4:coding}",
+			"        ${5:coding}",
 			"      </Fragment>",
 			"     );",
 			"  }",
@@ -102,7 +102,7 @@
 			"  }",
 			"}",
 			"",
-			"export default ${3:App};"
+			"export default ${4:App};"
 		],
 		"description": "if comonents"
 	},
@@ -134,10 +134,10 @@
 	"react-redux": {
 		"prefix": "reactredux",
 		"body": [
-			"import React, { Component, Fragment } from 'react';",
+			"import React, { ${1:PureComponent}, Fragment } from 'react';",
 			"import { connect } from 'react-redux'",
 			"",
-			"class ${1:APP} extends Component {",
+			"class ${2:APP} extends ${1:PureComponent} {",
 			"    render() {",
 			"      return (",
 			"        <Fragment>",
@@ -160,8 +160,16 @@
 			"  }",
 			"}",
 			"",
-			"export default connect(mapStateToProps, mapDispatchToProps)(${1:APP});"
+			"export default connect(mapStateToProps, mapDispatchToProps)(${2:APP});"
 		],
 		"description": "if comonents"
+	},
+	"styled": {
+		"prefix": "styled",
+		"body": [
+			"export const ${1:str}=styled.${2:div}`",
+			"   ${3}",
+			"`;"
+		]
 	}
 }
